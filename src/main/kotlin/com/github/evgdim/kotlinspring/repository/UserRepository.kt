@@ -6,6 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository
 /**
  * Created by evgen on 7/16/2017.
  */
-interface UserRepository : MongoRepository<User, String> {
+interface UserRepository : MongoRepository<User, String>, CustomUserRepository {
 
 }

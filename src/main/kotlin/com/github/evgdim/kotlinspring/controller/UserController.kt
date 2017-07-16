@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("user")
 class UserController(val userRepo: UserRepository) {
+
     @GetMapping
-    fun users(): MutableList<User>? {
-        return userRepo.findAll();
+    fun usersByAge(@RequestParam(required = false) age: Integer?): List<User>? {
+        return if (age != null) {
+            userRepo.findByAge(age)
+        } else {
+            userRepo.findAll();
+        }
     }
 
     @PostMapping
